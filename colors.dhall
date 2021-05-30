@@ -15,14 +15,19 @@ let Selection = { text : Text, background : Text }
 
 let Cursor = { text : Text, cursor : Text }
 
+let Primary =
+      { Type =
+          { background : Text
+          , foreground : Text
+          , dim_foreground : Optional Text
+          , dim_background : Optional Text
+          }
+      , default = { dim_foreground = None Text, dim_background = None Text }
+      }
+
 let Schema =
       { Type =
-          { primary :
-              { background : Text
-              , foreground : Text
-              , dim_foreground : Optional Text
-              , dim_background : Optional Text
-              }
+          { primary : Primary.Type
           , normal : Block
           , bright : Block
           , dim : Optional Block
@@ -75,4 +80,4 @@ let Schema =
         }
       }
 
-in  { Schema, Block, IndexColor, Selection, Cursor }
+in  { Schema, Primary, Block, IndexColor, Selection, Cursor }
